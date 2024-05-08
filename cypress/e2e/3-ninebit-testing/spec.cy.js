@@ -17,11 +17,11 @@ describe("My First Test", () => {
     cy.get(".block-header-logo__image").should("be.visible");
   });
   it("Our service button should navigate to services", () => {
-    cy.get("#El4_h-").click();
+    cy.get("a[href='/#services']").click();
     cy.url().should("include", "/#services");
   });
   it("Contact button should navigate to the contact us form", () => {
-    cy.get("#zpmpcl").click();
+    cy.get("[data-qa='gridbutton:zpmpcl']").click();
     cy.url().should("include", "/contact-us");
   });
   it("Contact us form should have three fields name,email,message", () => {
@@ -40,8 +40,9 @@ describe("My First Test", () => {
     cy.get("[name='Contact form']")
       .submit()
       .get(".success-message__heading")
-      .should("contain.text", "Thank You!").should("be.visible");
-      cy.get('[name="Contact form"]').screenshot()
+      .should("contain.text", "Thank You!")
+      .should("be.visible");
+    cy.get('[name="Contact form"]').screenshot();
   });
 
   it("In the 'Subscribe to our newsletter' form, the input field should have one field 'your email'", () => {
@@ -49,23 +50,25 @@ describe("My First Test", () => {
   });
   it("In the 'Subscribe to our newsletter' form, the subscribe button should submit the 'useremail'", () => {
     cy.get("[placeholder='Your email']").type("pragati@ninebit.in");
-    cy.get("[name='Subscribe form']").submit().get(".success-message__heading").should("contain.text", "Thank you!").should("be.visible");
-    // .submit()
-    // .should("contain.text", "Thank you!");
+    cy.get("[name='Subscribe form']")
+      .submit()
+      .get(".success-message__heading")
+      .should("contain.text", "Thank you!")
+      .should("be.visible");
   });
 
   it("In the footer, the 'Terms & conditions' link should navigate to the 'Terms & conditions' page", () => {
-    cy.get("[data-page-id=zNClbj]").click();
+    cy.get("[href='/terms-and-conditions']").click();
     cy.url().should("include", "/terms-and-conditions");
   });
 
   it("In the footer, the 'Privacy Policy' link should navigate to the 'Privacy Policy' page", () => {
-    cy.get("[data-page-id=zvo6mB]").click();
+    cy.get("[href='/privacy-policy']").click();
     cy.url().should("include", "/privacy-policy");
   });
 
   it("In the footer, the 'Workplace Policy' link should navigate to the 'Workplace Policy' page", () => {
-    cy.get("[data-page-id=z0Gp1u]").click();
+    cy.get("[href='/workplace-policy']").click();
     cy.url().should("include", "/workplace-policy");
   });
 
@@ -87,55 +90,9 @@ describe("My First Test", () => {
     cy.get('a[title="Go to Youtube page"]').find("svg").click();
   });
 });
-// it("Should visit the website and verify title negative", () => {
-//   cy.visit("https://ninebit.in/");
-
-//   cy.title().should(
-//     "eq",
-//     "Contact Us | NineBit Computing | Consulting | Digital Intelligence"
-//   );
-// });
-
-// it("CSS selectors and locators", () => {
-//   cy.visit("https://ninebit.in/");
-
-//   cy.get(".item-content").contains("Blog");
-//   cy.contains("Blog").click();
-// });
 
 // describe('My First Test', () => {
 //   it('Does not do much!', () => {
 //     expect(true).to.equal(false)
 //   })
-// })
-// describe("Newsletter Subscribe Form", () => {
-//   beforeEach(() => {
-//     cy.visit("https://ninebit.in/")
-//     cy.contains('Blog').click()
-//   })
-
-//   it("allows users to subscribe to the email list", () => {
-//     cy.get("Your email")
-//   })
-// })
-// describe("Newsletter Subscribe Form", () => {
-//   beforeEach(() => {
-//     cy.visit("https://ninebit.in/")
-//   })
-
-//   it("allows users to subscribe to the email list", () => {
-//     cy.get("input[type=text]")
-//   })
-// })
-
-// cy.contains('Blog').click()
-//  // Should be on a new URL which
-// // includes '/blog-list'
-// cy.url().should('include', '/blog-list')
-// /
-//   // Get an input, type into it
-// cy.get('input')
-// cy.location().should((loc) => {
-
-//   expect(loc.pathname).to.eq('ninebit.in/blog-list')
 // })
